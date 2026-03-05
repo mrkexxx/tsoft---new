@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tsoft2 - Tool tạo prompt video veo3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-purple': '#6d28d9',
+              'brand-light-purple': '#8b5cf6',
+              'dark-bg': '#111827',
+              'dark-card': '#1f2937',
+              'dark-border': '#374151',
+              'dark-text': '#d1d5db',
+              'dark-text-secondary': '#9ca3af',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @keyframes gradient-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animated-gradient-text {
+        background-size: 200% 200%;
+        animation: gradient-animation 5s ease infinite;
+      }
+      .typing-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 0;
+      }
+      .typing-indicator span {
+        height: 8px;
+        width: 8px;
+        float: left;
+        margin: 0 2px;
+        background-color: #9ca3af;
+        display: block;
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: typing-animation 1s infinite ease-in-out;
+      }
+      .typing-indicator span:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .typing-indicator span:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes typing-animation {
+        0% { opacity: 0.4; transform: translateY(0); }
+        25% { opacity: 1; transform: translateY(-3px); }
+        50% { opacity: 0.4; transform: translateY(0); }
+        100% { opacity: 0.4; transform: translateY(0); }
+      }
+      @keyframes pulse-animation {
+        0% {
+          box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(139, 92, 246, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+        }
+      }
+      .chatbot-pulse {
+        animation: pulse-animation 2s infinite;
+      }
+      /* === VIP Card Glow Effect === */
+      @keyframes vip-glow-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+      }
+      .vip-card-container {
+          position: relative;
+          padding: 2px; /* This creates the border thickness */
+          border-radius: 0.75rem; /* Tailwind's rounded-xl */
+          overflow: hidden;
+          z-index: 1;
+      }
+      .vip-card-container::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: conic-gradient(
+              transparent,
+              #a855f7, /* purple */
+              #ec4899, /* pink */
+              transparent 30%
+          );
+          animation: vip-glow-spin 4s linear infinite;
+          z-index: -1; /* Place the gradient behind the card */
+      }
+      /* === Chatbot Animations === */
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.4s ease-out forwards;
+      }
+      @keyframes avatar-glow {
+        0% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.5); }
+        50% { box-shadow: 0 0 0 6px rgba(167, 139, 250, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+      }
+      .avatar-glowing {
+        animation: avatar-glow 1.5s infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-dark-bg text-dark-text">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
